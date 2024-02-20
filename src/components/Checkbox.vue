@@ -1,12 +1,18 @@
 <template>
   <div class="checkbox-container">
-    <label class="label" :for="item.title">
+    <label
+      :class="item.selected ? 'label active' : 'label'"
+      :id="item.id"
+      :for="item.title"
+    >
       <div class="cercle">
         <img :src="item.iconSrc" :alt="item.value" />
       </div>
+
       <div class="text">{{ item.title }}</div>
 
       <input
+        class="input"
         type="checkbox"
         :id="item.title"
         :value="item.value"
@@ -52,6 +58,7 @@ export default {
     box-shadow: 0px 4px 10px 0px rgba(31, 37, 89, 0.07),
       0px 2px 11px 0px rgba(69, 65, 164, 0.06);
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     &.active {
       border: 2px solid $accent;
     }
@@ -69,9 +76,6 @@ export default {
     overflow: hidden;
     clip: rect(0 0 0 0);
     position: absolute;
-    &:checked + .checkbox {
-      border: 3px solid $accent;
-    }
   }
   .checkbox {
     position: absolute;

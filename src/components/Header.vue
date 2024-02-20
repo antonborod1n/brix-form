@@ -5,6 +5,7 @@
         <a class="link" href="#">
           <img class="logo" src="../../public/img/logo-top.svg" alt="Логотип" />
         </a>
+        <slot></slot>
         <button class="btn">Clone now</button>
       </div>
     </div>

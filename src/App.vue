@@ -85,24 +85,28 @@ export default {
       radio: [
         {
           id: 1,
+          title: "budget1",
           value: "5",
           text: "$5.000 - $10.000",
           selected: false,
         },
         {
           id: 2,
+          title: "budget2",
           value: "10",
           text: "$10.000 - $20.000",
           selected: false,
         },
         {
           id: 3,
+          title: "budget3",
           value: "20",
           text: "$20.000 - $50.000",
           selected: false,
         },
         {
           id: 4,
+          title: "budget4",
           value: "50",
           text: "$50.000 +",
           selected: false,
@@ -123,10 +127,19 @@ export default {
         checkbox.selected = data.selected;
       }
     },
-    handleRadioChange(data) {
+    /*     handleRadioChange(data) {
       this.radio.forEach((item) => {
         item.selected = item.id === data.id;
       });
+    }, */
+
+    handleRadioChange(data) {
+      console.log(data);
+      const radio = this.radio.find((item) => item.id === data.id);
+
+      if (radio) {
+        radio.selected = data.selected;
+      }
     },
     nextStep() {
       this.currentStep++;
@@ -273,9 +286,7 @@ export default {
                   <div class="top">
                     <h2 class="subtitle">What’s your project budget?</h2>
                     <p class="slogan">
-                      Please select the project budget range you have in mind.{{
-                        budget
-                      }}
+                      Please select the project budget range you have in mind.
                     </p>
                   </div>
 
@@ -283,9 +294,10 @@ export default {
                     <Radio
                       v-for="item in radio"
                       :key="item.id"
-                      :item="item"
+                      :title="item.title"
                       :value="item.value"
                       :text="item.text"
+                      :selected="item.selected"
                       @change="handleRadioChange"
                     />
                   </div>
@@ -295,7 +307,7 @@ export default {
                   <div class="top">
                     <img
                       class="img"
-                      src="../../public/img/submit-bg.svg"
+                      src="../public/img/submit-bg.svg"
                       alt="Форма отправленна"
                     />
                     <h2 class="subtitle">Submit your quote request</h2>

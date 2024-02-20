@@ -1,41 +1,44 @@
 <template>
-  <input
-    type="radio"
-    :id="item.id"
-    :value="item.value"
-    :checked="item.selected"
-    @change="handleChange"
-  />
-  <label :for="item.id">
-    <span class="text">{{ item.text }}</span>
-  </label>
-  <!-- <input
+  <label :class="selected ? 'label active' : 'label'" :for="id">
+    <span class="text">{{ text }}</span>
+
+    <input
       class="input"
       type="radio"
-      name="money"
-      :id="item.id"
-      :value="item.value"
-      :checked="item.selected"
+      name="budget"
+      :id="id"
+      :value="value"
+      :checked="selected"
       @change="handleChange"
     />
-    <span class="radio"></span>
-    <span class="text">{{ item.text }}</span>
-  </label> -->
+  </label>
 </template>
 
 
 <script>
 export default {
   props: {
-    item: {
-      type: Object,
-      required: true,
+    id: {
+      type: Number,
+    },
+    title: {
+      type: String,
+    },
+    value: {
+      type: String,
+    },
+    text: {
+      type: String,
+    },
+    selected: {
+      type: Boolean,
     },
   },
   methods: {
-    handleChange() {
+    handleChange(event) {
       this.$emit("change", {
-        id: this.item.id,
+        id: id,
+        selected: event.target.checked,
       });
     },
   },
@@ -47,11 +50,10 @@ export default {
 @import "../assets/styles/vars";
 .step3 {
   .label {
-    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: 284px;
     height: 115px;
     border-radius: 16px;
@@ -60,6 +62,7 @@ export default {
     box-shadow: 0px 4px 10px 0px rgba(31, 37, 89, 0.07),
       0px 2px 11px 0px rgba(69, 65, 164, 0.06);
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     &.active {
       border: 2px solid $accent;
     }
@@ -70,9 +73,6 @@ export default {
     overflow: hidden;
     clip: rect(0 0 0 0);
     position: absolute;
-    &:checked + .radio {
-      border: 7px solid $accent;
-    }
   }
   .radio {
     position: absolute;
@@ -91,4 +91,4 @@ export default {
     padding-left: 60px;
   }
 }
-</style>  -->
+</style> 
