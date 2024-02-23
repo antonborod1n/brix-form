@@ -1,22 +1,18 @@
 <template>
   <div class="checkbox-container">
-    <label
-      :class="item.selected ? 'label active' : 'label'"
-      :id="item.id"
-      :for="item.title"
-    >
+    <label :class="selected ? 'label active' : 'label'">
       <div class="cercle">
-        <img :src="item.iconSrc" :alt="item.value" />
+        <img :src="iconSrc" :alt="value" />
       </div>
 
-      <div class="text">{{ item.title }}</div>
+      <div class="text">{{ title }}</div>
 
       <input
         class="input"
         type="checkbox"
-        :id="item.title"
-        :value="item.value"
-        :checked="item.selected"
+        :id="title"
+        :value="value"
+        :checked="selected"
         @change="handleChange"
       />
     </label>
@@ -26,15 +22,26 @@
   <script>
 export default {
   props: {
-    item: {
-      type: Object,
-      required: true,
+    id: {
+      type: Number,
+    },
+    iconSrc: {
+      type: String,
+    },
+    title: {
+      type: String,
+    },
+    value: {
+      type: String,
+    },
+    selected: {
+      type: Boolean,
     },
   },
   methods: {
     handleChange(event) {
       this.$emit("change", {
-        id: this.item.id,
+        id: this.id,
         selected: event.target.checked,
       });
     },
@@ -47,13 +54,13 @@ export default {
 .step2 {
   .label {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    gap: 12px;
+    padding: 25px;
     width: 284px;
     height: 115px;
     border-radius: 16px;
-    border: 1px solid $white2;
+    border: 2px solid $white2;
     background-color: $white;
     box-shadow: 0px 4px 10px 0px rgba(31, 37, 89, 0.07),
       0px 2px 11px 0px rgba(69, 65, 164, 0.06);
@@ -61,6 +68,9 @@ export default {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     &.active {
       border: 2px solid $accent;
+    }
+    @media (max-width: 678px) {
+      width: 100%;
     }
   }
   .cercle {
@@ -90,7 +100,6 @@ export default {
     color: $black;
     font-size: 18px;
     line-height: 20px;
-    padding-left: 60px;
   }
 }
 </style>

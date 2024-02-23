@@ -58,7 +58,7 @@ export default {
     @media (max-width: 1000px) {
       font-size: 16px;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 678px) {
       width: 100%;
       height: 50px;
       padding: 15px 55px 15px 15px;

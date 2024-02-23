@@ -1,16 +1,19 @@
 <template>
-  <label :class="selected ? 'label active' : 'label'" :for="id">
-    <span class="text">{{ text }}</span>
+  <label :class="selected ? 'label active' : 'label'">
+    <div class="box">
+      <input
+        class="input"
+        type="radio"
+        name="budget"
+        :id="id"
+        :value="value"
+        :checked="selected"
+        @change="handleChange"
+      />
+      <span class="radio"></span>
+    </div>
 
-    <input
-      class="input"
-      type="radio"
-      name="budget"
-      :id="id"
-      :value="value"
-      :checked="selected"
-      @change="handleChange"
-    />
+    <span class="text">{{ text }}</span>
   </label>
 </template>
 
@@ -37,7 +40,7 @@ export default {
   methods: {
     handleChange(event) {
       this.$emit("change", {
-        id: id,
+        id: this.id,
         selected: event.target.checked,
       });
     },
@@ -50,14 +53,14 @@ export default {
 @import "../assets/styles/vars";
 .step3 {
   .label {
+    position: relative;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
+    padding: 25px;
     width: 284px;
     height: 115px;
     border-radius: 16px;
-    border: 1px solid $white2;
+    border: 2px solid $white2;
     background-color: $white;
     box-shadow: 0px 4px 10px 0px rgba(31, 37, 89, 0.07),
       0px 2px 11px 0px rgba(69, 65, 164, 0.06);
@@ -66,16 +69,24 @@ export default {
     &.active {
       border: 2px solid $accent;
     }
+    @media (max-width: 678px) {
+      width: 100%;
+    }
   }
   .input {
+    position: absolute;
     width: 1px;
     height: 1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
-    position: absolute;
+    &:checked + .radio {
+      border: 7px solid $accent;
+    }
   }
   .radio {
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     left: 25px;
     width: 25px;
     height: 25px;
@@ -88,7 +99,7 @@ export default {
     color: $black;
     font-size: 18px;
     line-height: 20px;
-    padding-left: 60px;
+    padding-left: 35px;
   }
 }
 </style> 

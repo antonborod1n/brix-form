@@ -127,17 +127,11 @@ export default {
         checkbox.selected = data.selected;
       }
     },
-    /*     handleRadioChange(data) {
-      this.radio.forEach((item) => {
-        item.selected = item.id === data.id;
-      });
-    }, */
-
     handleRadioChange(data) {
-      console.log(data);
       const radio = this.radio.find((item) => item.id === data.id);
 
       if (radio) {
+        this.radio.forEach((item) => (item.selected = false));
         radio.selected = data.selected;
       }
     },
@@ -276,7 +270,11 @@ export default {
                     <Checkbox
                       v-for="item in checkboxes"
                       :key="item.id"
-                      :item="item"
+                      :id="item.id"
+                      :iconSrc="item.iconSrc"
+                      :title="item.title"
+                      :value="item.value"
+                      :selected="item.selected"
                       @change="handleCheckboxChange"
                     />
                   </div>
@@ -294,6 +292,7 @@ export default {
                     <Radio
                       v-for="item in radio"
                       :key="item.id"
+                      :id="item.id"
                       :title="item.title"
                       :value="item.value"
                       :text="item.text"
@@ -428,7 +427,7 @@ export default {
     font-size: 18px;
     line-height: 20px;
     @media (max-width: 1000px) {
-      width: 120px;
+      width: 130px;
       height: 41px;
     }
   }
@@ -555,19 +554,8 @@ export default {
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(2, 1fr);
       gap: 44px 28px;
-      /*     .label {
-      @extend %dms-500;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 18px;
-      color: $black;
-      font-size: 18px;
-      line-height: 20px;
-      cursor: pointer;
-    } */
 
-      @media (max-width: 1000px) {
+      @media (max-width: 678px) {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(4, 1fr);
         gap: 20px;
