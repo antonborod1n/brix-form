@@ -55,28 +55,28 @@ export default {
       checkboxes: [
         {
           id: 1,
-          iconSrc: "../../public/img/icon-dev.svg",
+          iconSrc: "/img/icon-dev.svg",
           title: "Development",
           value: "development",
           selected: false,
         },
         {
           id: 2,
-          iconSrc: "../../public/img/icon-desing.svg",
+          iconSrc: "/img/icon-desing.svg",
           title: "Web Design",
           value: "design",
           selected: false,
         },
         {
           id: 3,
-          iconSrc: "../../public/img/icon-marketing.svg",
+          iconSrc: "/img/icon-marketing.svg",
           title: "Marketing",
           value: "marketing",
           selected: false,
         },
         {
           id: 4,
-          iconSrc: "../../public/img/icon-other.svg",
+          iconSrc: "/img/icon-other.svg",
           title: "Other",
           value: "other",
           selected: false,
