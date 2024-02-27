@@ -464,6 +464,7 @@ export default {
       color: $grey;
       font-size: 16px;
       line-height: 23px;
+      transition: all 0.6s;
     }
     .num.active {
       color: $white;
@@ -491,6 +492,7 @@ export default {
         height: 6px;
         border-radius: 40px;
         background-color: $accent;
+        animation: fade 0.5s;
       }
     }
     .range.full {
@@ -502,9 +504,20 @@ export default {
         height: 6px;
         border-radius: 40px;
         background-color: $accent;
+        transition: all 0.2s;
       }
     }
   }
+
+  @keyframes fade {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 50%;
+    }
+  }
+
   .item {
     display: flex;
     align-items: center;

@@ -23,18 +23,23 @@ export default {
   props: {
     id: {
       type: Number,
+      required: true,
     },
     title: {
       type: String,
+      required: true,
     },
     value: {
       type: String,
+      required: true,
     },
     text: {
       type: String,
+      required: true,
     },
     selected: {
       type: Boolean,
+      required: true,
     },
   },
   methods: {

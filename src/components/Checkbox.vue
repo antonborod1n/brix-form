@@ -19,23 +19,28 @@
   </div>
 </template>
   
-  <script>
+<script>
 export default {
   props: {
     id: {
       type: Number,
+      required: true,
     },
     iconSrc: {
       type: String,
+      required: true,
     },
     title: {
       type: String,
+      required: true,
     },
     value: {
       type: String,
+      required: true,
     },
     selected: {
       type: Boolean,
+      required: true,
     },
   },
   methods: {

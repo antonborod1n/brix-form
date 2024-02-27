@@ -2,7 +2,7 @@
   <button class="prev-button" @click="prevStep">Previous step</button>
 </template>
   
-  <script>
+<script>
 export default {
   methods: {
     prevStep() {
@@ -12,7 +12,7 @@ export default {
 };
 </script>
   
-  <style scoped>
+<style scoped>
 .prev-button {
   background-color: #6c757d;
   color: white;
